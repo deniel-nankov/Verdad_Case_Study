@@ -1,0 +1,5 @@
+Strategy,Sharpe Ratio,Annual Return,Max Drawdown,Final Value
+Baseline (IS),1.434,5.22%,-4.12%,"$223,884"
+Optimized (IS),-0.307,-2.70%,-50.93%,"$66,453"
+Baseline (OOS),1.273,3.86%,-3.69%,"$140,157"
+Optimized (OOS),-0.308,-2.67%,-26.13%,"$80,519"

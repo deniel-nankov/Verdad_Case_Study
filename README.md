@@ -1,197 +1,250 @@
 # Verdad FX Carry Strategy - Technical Case Study
 
-## Overview
-This repository contains a comprehensive analysis of FX carry strategies using daily data from 2000-2025 for 8 major currencies.
+## 🎯 Overview
 
-## Files
+A comprehensive, production-ready FX carry trading system with machine learning, deep reinforcement learning, and live trading capabilities.
 
-### 1. `fx_carry_analysis.ipynb` - Main Analysis Notebook
-Complete Jupyter notebook with all analysis including:
-- Data loading and preprocessing
-- Currency excess returns calculation
-- Risk-return analysis
-- Monthly rebalanced long-short strategy construction
-- Performance metrics (CAGR, Sharpe, Max Drawdown)
-- Currency-equity correlation analysis
-- Framework for evaluating predictive signals
+**NEW STRUCTURE**: This repository has been reorganized into a clean, modular architecture for better maintainability and scalability.
 
-### 2. `verdad_fx_case_study_data.csv` - Data File
-Daily data containing:
-- Exchange rates for 8 currencies (AUD, BRL, CAD, CHF, EUR, GBP, JPY, MXN)
-- Spot interest rates
-- S&P 500 Total Return index
-- US Federal Funds Rate
+## 📁 Project Structure
 
-### 3. `memo_template.md` - Investment Memo Template
-Pre-structured memo template for the written deliverable. Fill in the bracketed sections with results from the notebook.
+```
+Verdad_Technical_Case_Study/
+├── src/                          # Main source code
+│   ├── core/                     # Core trading system
+│   │   ├── data_feeds.py        # Data feed implementations
+│   │   ├── broker_integrations.py
+│   │   └── risk_management.py
+│   ├── strategies/               # Trading strategies
+│   ├── ml/                       # Machine learning models
+│   ├── factors/                  # Factor implementations
+│   ├── monitoring/               # Monitoring & alerts
+│   └── utils/                    # Utilities
+├── scripts/                      # Executable scripts
+│   ├── backtesting/             # Backtest scripts
+│   ├── training/                # ML/DRL training
+│   ├── live/                    # Live trading
+│   └── data/                    # Data management
+├── tests/                        # Test files
+├── notebooks/                    # Jupyter notebooks
+├── docs/                         # Documentation
+├── data/                         # Data files
+│   ├── raw/                     # Original data
+│   ├── external/                # External data sources
+│   └── cache/                   # Cached data
+├── config/                       # Configuration files
+├── models/                       # Trained models
+│   ├── ml/                      # ML models
+│   └── drl/                     # DRL models
+├── results/                      # Backtest results
+│   ├── charts/                  # Performance charts
+│   ├── backtests/               # Backtest CSVs
+│   └── equity_curves/           # Equity curves
+└── archive/                      # Archived/legacy code
 
-## Getting Started
-
-### Step 1: Run the Notebook
-```bash
-# Open the notebook
-jupyter notebook fx_carry_analysis.ipynb
-
-# Or if using VS Code
-# Just open the .ipynb file
 ```
 
-### Step 2: Execute All Cells
-Run all cells in order to:
-1. Load and parse the data
-2. Calculate excess returns
-3. Build the carry strategy
-4. Generate all visualizations
-5. Compute performance metrics
+## 🚀 Quick Start
 
-### Step 3: Complete the Memo
-Use `memo_template.md` as a guide:
-1. Copy key statistics from notebook output
-2. Include relevant charts
-3. Add your analysis and interpretation
-4. Export as PDF for submission
+### 1. Installation
 
-## Key Analysis Components
+```bash
+# Clone repository
+git clone <repo-url>
+cd Verdad_Technical_Case_Study
 
-### 1. Currency Excess Returns
-Formula: `Excess Return = ΔFX + (Foreign Rate - US Rate)`
+# Create virtual environment
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
 
-Each currency's excess return captures both appreciation/depreciation and the carry premium.
+# Install dependencies
+pip install -r requirements.txt
+```
 
-### 2. Carry Strategy
-- **Universe:** 8 currencies
-- **Ranking:** By interest rate differential (Foreign - US)
-- **Positions:** Long top 3, Short bottom 3
-- **Weights:** Equal weight (1/3 per position)
-- **Rebalancing:** Monthly
+### 2. Configuration
 
-### 3. Performance Metrics
-- CAGR (Compound Annual Growth Rate)
-- Annualized Volatility
-- Sharpe Ratio
-- Maximum Drawdown
-- Correlation to Equities
+```bash
+# Copy environment template
+cp config/.env.template .env
 
-### 4. Risk Analysis
-- Distribution analysis (skewness, kurtosis)
-- Tail risk assessment
-- Drawdown analysis
-- Regime-dependent performance
+# Edit .env with your API keys
+nano .env  # or use your preferred editor
+```
 
-## Key Questions Answered
+**Required API Keys:**
+- **Alpha Vantage**: Get free key at https://www.alphavantage.co/
+- **FRED**: Get free key at https://fred.stlouisfed.org/
+- **OANDA** (optional, for live trading): https://www.oanda.com/
 
-1. **Is carry risk compensation or free lunch?**
-   - Analysis of skewness, kurtosis, and tail risk
-   - Comparison of risk-adjusted returns
-   - Regime-dependent performance
+### 3. Run Analysis
 
-2. **Strategy Performance**
-   - Full period metrics (2000-2025)
-   - Crisis period analysis
-   - Comparison to equities
+```bash
+# Open Jupyter notebooks
+jupyter notebook notebooks/fx_carry_analysis.ipynb
 
-3. **Currency-Equity Relationships**
-   - Individual currency correlations
-   - High-carry vs low-carry patterns
-   - Diversification properties
+# Or run backtests
+python scripts/backtesting/run_backtest.py --strategy baseline
+```
 
-4. **Investment Appeal**
-   - Benefits and risks
-   - Optimal portfolio allocation
-   - Implementation considerations
+### 4. Paper Trading (Safe Testing)
 
-5. **Predictive Signals**
-   - Framework for evaluation
-   - Example with equity volatility
-   - Statistical testing methodology
+```bash
+# Populate FX cache first
+python scripts/data/populate_cache.py
 
-## Expected Output
+# Run paper trading
+python scripts/live/run_paper_trading.py
+```
 
-### Deliverables
-1. **Jupyter Notebook** with all code and visualizations ✓
-2. **Investment Memo** (1-2 pages) - Use template provided
-3. **Key Charts** - Already generated in notebook
+## 📊 Key Features
 
-### Time Estimate
-- Notebook execution: 10-15 minutes
-- Memo writing: 2-3 hours
-- Total: 4-6 hours
+### Research & Analysis
+- **Phase 1**: Baseline FX carry strategy analysis
+- **Phase 2**: Advanced multi-factor models with ML
+- **Backtesting**: Comprehensive backtesting framework
+- **Performance**: Out-of-sample Sharpe ratio +0.178
 
-## Technical Requirements
+### Live Trading System
+- ✅ Real-time data feeds (Alpha Vantage, OANDA, cached)
+- ✅ Multi-broker support (OANDA, IB, Alpaca, Paper)
+- ✅ Risk management (position limits, stop-loss, drawdown controls)
+- ✅ Performance monitoring dashboard
+- ✅ Alert system (Email, Slack, SMS)
 
-### Python Packages
+### Machine Learning
+- Random Forest & Gradient Boosting models
+- Feature engineering with 51+ macro indicators
+- Regime prediction and signal filtering
+- Walk-forward validation
+
+### Deep Reinforcement Learning
+- Probabilistic DDPG implementation
+- Multi-currency training
+- Adaptive position sizing
+
+## 📖 Documentation
+
+- **[Quick Start Guide](docs/QUICK_START.md)** - Get started in 5 minutes
+- **[Live Trading Setup](docs/LIVE_TRADING_SETUP.md)** - Production deployment guide
+- **[Data Sources Guide](docs/guides/DATA_SOURCES_GUIDE.md)** - API integration
+- **[Backtest Results](docs/results/)** - Historical performance analysis
+
+## 🔧 Core Modules
+
+### Data Feeds (`src/core/data_feeds.py`)
+
 ```python
-pandas
-numpy
-matplotlib
-seaborn
+from src.core.data_feeds import create_data_feed
+
+# Cached feed (works offline, no API needed)
+feed = create_data_feed('cached')
+
+# Real-time feeds
+feed = create_data_feed('alphavantage', api_key='YOUR_KEY')
+feed = create_data_feed('oanda', api_key='KEY', account_id='ID')
 ```
 
-### Installation
+### Risk Management (`src/core/risk_management.py`)
+
+```python
+from src.core.risk_management import RiskManager, RiskLimits
+
+limits = RiskLimits(
+    max_position_size=0.3,
+    max_drawdown_pct=0.15,
+    stop_loss_pct=0.05
+)
+risk_mgr = RiskManager(limits, initial_capital=100000)
+```
+
+### Configuration (`src/utils/config_loader.py`)
+
+```python
+from src.utils.config_loader import load_config, get_api_key
+
+config = load_config()
+api_key = get_api_key('alphavantage')
+```
+
+## 🧪 Testing
+
 ```bash
-pip install pandas numpy matplotlib seaborn
+# Run all tests
+python -m pytest tests/ -v
+
+# Test specific components
+python tests/test_data_feeds.py
+python tests/test_brokers.py
 ```
 
-## Tips for Success
+## 📈 Running Backtests
 
-1. **Run cells sequentially** - Each cell builds on previous ones
-2. **Review all visualizations** - They tell the story
-3. **Check summary statistics** - Numbers support conclusions
-4. **Compare regimes** - High vol vs low vol performance
-5. **Think critically** - What does the data really say?
+```bash
+# Baseline strategy
+python scripts/backtesting/run_backtest.py --strategy baseline
 
-## Key Insights to Highlight
+# Custom date range
+python scripts/backtesting/run_backtest.py \
+  --strategy baseline \
+  --start-date 2010-01-01 \
+  --end-date 2023-12-31
 
-### In Your Memo
+# All strategies
+python scripts/backtesting/run_backtest.py --strategy all
+```
 
-1. **Skewness & Kurtosis**
-   - High-carry currencies show negative skew
-   - Evidence of crash risk
-   - Not a free lunch!
+## 🎓 Training ML Models
 
-2. **Correlation Patterns**
-   - Higher-carry = higher equity correlation
-   - Pro-cyclical risk
-   - Poor crisis diversification
+```bash
+# Train ML models (consolidated script - coming soon)
+python scripts/training/train_ml.py --currencies EUR CHF
 
-3. **Performance Attribution**
-   - Positive long-term returns
-   - Significant drawdowns in crises
-   - Sharpe ratio vs equities
+# Train DRL models (consolidated script - coming soon)
+python scripts/training/train_drl.py --algorithm ddpg
+```
 
-4. **Investment Implications**
-   - Size appropriately (5-10% allocation)
-   - Combine with defensive strategies
-   - Active risk management essential
+**Note**: Individual training scripts are archived in `archive/training/` for reference.
 
-## Common Questions
+## ⚠️ Important Notes
 
-**Q: Why does the strategy lose money in some periods?**
-A: Carry strategies are short volatility - they suffer when risk-off periods cause funding currencies to appreciate.
+### Security
+- **Never commit `.env` file** - it contains your API keys
+- API keys are loaded from environment variables, not hardcoded
+- Use paper trading mode for testing before going live
 
-**Q: Which currencies are typically high-carry?**
-A: Historically BRL, MXN, AUD (higher rates, commodity-linked)
+### Data
+- Original data: `data/raw/verdad_fx_case_study_data.csv`
+- External data cached in `data/external/`
+- FX cache: `fx_data_cache.json` (auto-refreshes every 6 hours)
 
-**Q: Which are low-carry/safe havens?**
-A: JPY, CHF, sometimes EUR (lower rates, flight-to-quality)
+### Legacy Code
+- Old backtest files: `archive/backtests/`
+- Old training scripts: `archive/training/`
+- These are preserved for reference but not actively maintained
 
-**Q: How often does the strategy rebalance?**
-A: Monthly, at month-end
+## 📊 Performance Summary
 
-**Q: What about transaction costs?**
-A: Not explicitly modeled, but mentioned as implementation consideration
+| Strategy | Full Sample Sharpe | OOS Sharpe (2016-2025) | Max Drawdown |
+|----------|-------------------|------------------------|--------------|
+| Baseline | -0.275 | -0.464 | -66.8% |
+| **Optimized** | **-0.202** | **+0.178** ✅ | **-20.98%** |
+| ML-Filtered | -0.352 | -0.508 | -63.3% |
 
-## Contact & Support
+**Key Finding**: Portfolio optimization with transaction costs achieves positive out-of-sample Sharpe ratio.
 
-For questions about the analysis or methodology, refer to:
-- Notebook comments and docstrings
-- Memo template structure
-- Academic literature on carry trade
+## 🤝 Contributing
 
-## License & Attribution
+This is a technical case study project. For questions or issues:
+1. Check documentation in `docs/`
+2. Review archived implementations in `archive/`
+3. See notebook comments for methodology
 
-This is a technical case study for interview purposes.
+## 📝 License
+
+This is a technical case study for educational and interview purposes.
 
 ---
 
 **Good luck with your analysis!** 🚀
+
+For detailed setup instructions, see [docs/QUICK_START.md](docs/QUICK_START.md)

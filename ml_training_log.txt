@@ -1,0 +1,483 @@
+======================================================================
+🤖 ML FX CARRY TRADING STRATEGY - TRAINING
+======================================================================
+Started: 2025-11-06 12:08:31
+
+📋 Configuration:
+   Currencies: AUD, BRL, CAD, CHF, EUR, GBP, JPY, MXN
+   Start date: 2010-01-01 (15 years of data!)
+   FRED API Key: ✅ Loaded
+   Fast Mode: ✅ ON (5-10 min)
+   Skip LSTM: ✅ YES (2-3 min total!)
+
+======================================================================
+📊 STEP 1: LOADING DATA
+======================================================================
+📊 Loading comprehensive dataset for ML...
+  ├─ Loading FX rates...
+  ├─ Loading interest rates...
+  ├─ Loading market data (equities, VIX, etc.)...
+  ├─ Loading macro data (GDP, inflation, etc.)...
+  ├─ Loading commodity data...
+  └─ Merging datasets...
+✅ Loaded 3962 rows, 52 columns
+   Date range: 2015-01-01 00:00:00 to 2025-11-05 00:00:00
+✅ Data loaded successfully!
+   Shape: (3962, 52)
+   Date range: 2015-01-01 00:00:00 to 2025-11-05 00:00:00
+   Columns: 52
+
+   First few columns: AUD_USD, BRL_USD, CAD_USD, CHF_USD, EUR_USD
+
+======================================================================
+🔧 STEP 2: FEATURE ENGINEERING
+======================================================================
+🔧 Engineering features...
+  ├─ Carry features...
+  ├─ Momentum features...
+  ├─ Volatility features...
+  ├─ Market risk features...
+  ├─ Dollar beta features...
+  ├─ Macro features...
+  ├─ Technical indicators...
+  └─ Interaction features...
+✅ Created 246 features
+✅ Features created successfully!
+   Total features: 246
+   Sample size: 3648 rows
+
+   Feature breakdown:
+     carry               :  40 features
+     momentum            :  81 features
+     volatility          :  49 features
+     risk                :  11 features
+     dollar              :  13 features
+     macro               :   4 features
+     technical           :  48 features
+     interaction         :   0 features
+
+======================================================================
+🤖 STEP 3: TRAINING EUR (DEMO)
+======================================================================
+Training one currency first to validate the pipeline...
+
+📊 Training data for EUR:
+   Features shape: (3627, 246)
+   Target shape: (3627,)
+   Target mean: 0.000622
+   Target std: 0.016619
+
+🚀 Training models for EUR...
+
+🤖 Training ML ensemble for EUR...
+  Train: 2901 samples | Val: 726 samples
+  ├─ Training Random Forest...
+  ├─ Training XGBoost...
+  ├─ Skipping LSTM (fast mode)
+  └─ Evaluating ensemble...
+
+  ✅ Results:
+     RF:       R² = 0.1351
+     XGB:      R² = 0.0116
+     LSTM:     R² = 0.0734 (skipped)
+     Ensemble: R² = 0.0905
+✅ Saved models for EUR to ./ml_models/EUR
+
+✅ EUR training complete!
+   Random Forest R²: 0.1351
+   XGBoost R²: 0.0116
+   LSTM R²: 0.0734
+   Ensemble R²: 0.0905
+
+======================================================================
+🎯 STEP 4: EUR FEATURE IMPORTANCE
+======================================================================
+📊 Top 20 Most Important Features for EUR:
+
+    2. CAD_ma_50                                0.0430
+    1. BRL_mom_x_vix                            0.0365
+    3. BRL_vol_63d                              0.0329
+    7. CHF_mom_12m                              0.0230
+    4. CAD_ma_20                                0.0225
+    5. BRL_ma_200                               0.0214
+   11. GBP_vol_126d                             0.0185
+    6. CHF_dxy_beta                             0.0183
+   10. JPY_dxy_beta                             0.0169
+    8. BRL_ma_50                                0.0158
+   16. EUR_vol_126d                             0.0155
+    9. CAD_vol_63d                              0.0151
+   23. gdp_growth                               0.0143
+   14. CHF_ma_20                                0.0130
+   12. CHF_price_vs_ma200                       0.0128
+   18. AUD_ma_50                                0.0127
+   13. EUR_price_vs_ma200                       0.0124
+   33. GBP_mom_12m                              0.0110
+   80. EUR_vol_63d                              0.0107
+   17. MXN_ma_200                               0.0107
+
+======================================================================
+🚀 STEP 5: TRAINING ALL CURRENCIES
+======================================================================
+⚡ FAST MODE: Training should complete in 5-10 minutes
+
+======================================================================
+🚀 TRAINING ML FX STRATEGY
+======================================================================
+
+📥 Step 1: Loading data...
+📊 Loading comprehensive dataset for ML...
+  ├─ Loading FX rates...
+  ├─ Loading interest rates...
+  ├─ Loading market data (equities, VIX, etc.)...
+  ├─ Loading macro data (GDP, inflation, etc.)...
+  ├─ Loading commodity data...
+  └─ Merging datasets...
+✅ Loaded 3962 rows, 52 columns
+   Date range: 2015-01-01 00:00:00 to 2025-11-05 00:00:00
+
+🔧 Step 2: Engineering features...
+🔧 Engineering features...
+  ├─ Carry features...
+  ├─ Momentum features...
+  ├─ Volatility features...
+  ├─ Market risk features...
+  ├─ Dollar beta features...
+  ├─ Macro features...
+  ├─ Technical indicators...
+  └─ Interaction features...
+✅ Created 246 features
+
+🤖 Step 3: Training models...
+
+======================================================================
+📊 Currency: AUD
+======================================================================
+
+🤖 Training ML ensemble for AUD...
+  Train: 2901 samples | Val: 726 samples
+  ├─ Training Random Forest...
+  ├─ Training XGBoost...
+  ├─ Skipping LSTM (fast mode)
+  └─ Evaluating ensemble...
+
+  ✅ Results:
+     RF:       R² = -0.2525
+     XGB:      R² = -0.3138
+     LSTM:     R² = -0.2831 (skipped)
+     Ensemble: R² = -0.1052
+✅ Saved models for AUD to ./ml_models/AUD
+
+  🎯 Top 10 features for AUD:
+     CAD_ma_20                                0.0899
+     CAD_downside_vol                         0.0570
+     CAD_carry_x_vol                          0.0368
+     MXN_mom_12m                              0.0320
+     CAD_vol_63d                              0.0224
+     AUD_mom_6m_vol_adj                       0.0165
+     AUD_vol_ratio                            0.0160
+     MXN_ma_50                                0.0156
+     MXN_dxy_beta                             0.0151
+     CAD_ma_50                                0.0149
+
+======================================================================
+📊 Currency: BRL
+======================================================================
+
+🤖 Training ML ensemble for BRL...
+  Train: 2901 samples | Val: 726 samples
+  ├─ Training Random Forest...
+  ├─ Training XGBoost...
+  ├─ Skipping LSTM (fast mode)
+  └─ Evaluating ensemble...
+
+  ✅ Results:
+     RF:       R² = -0.4848
+     XGB:      R² = -0.9459
+     LSTM:     R² = -0.7154 (skipped)
+     Ensemble: R² = -0.2620
+✅ Saved models for BRL to ./ml_models/BRL
+
+  🎯 Top 10 features for BRL:
+     BRL_ma_200                               0.0602
+     MXN_downside_vol                         0.0380
+     MXN_ma_50                                0.0336
+     MXN_dxy_beta                             0.0318
+     BRL_vol_126d                             0.0214
+     BRL_mom_3m_vol_adj                       0.0201
+     BRL_vol_63d                              0.0184
+     BRL_mom_x_vix                            0.0156
+     BRL_mom_12m_vol_adj                      0.0154
+     BRL_vol_21d                              0.0147
+
+======================================================================
+📊 Currency: CAD
+======================================================================
+
+🤖 Training ML ensemble for CAD...
+  Train: 2901 samples | Val: 726 samples
+  ├─ Training Random Forest...
+  ├─ Training XGBoost...
+  ├─ Skipping LSTM (fast mode)
+  └─ Evaluating ensemble...
+
+  ✅ Results:
+     RF:       R² = -0.1616
+     XGB:      R² = -0.3967
+     LSTM:     R² = -0.2792 (skipped)Traceback (most recent call last):
+  File "/Users/denielnankov/Documents/Verdad_Technical_Case_Study/train_ml_models.py", line 261, in <module>
+    signals = strategy.generate_signals()
+  File "/Users/denielnankov/Documents/Verdad_Technical_Case_Study/ml_fx/ml_strategy.py", line 190, in generate_signals
+    current_data = self.data_loader.get_latest_data()
+  File "/Users/denielnankov/Documents/Verdad_Technical_Case_Study/ml_fx/data_loader.py", line 303, in get_latest_data
+    data = self.load_all_data(start_date, end_date)
+  File "/Users/denielnankov/Documents/Verdad_Technical_Case_Study/ml_fx/data_loader.py", line 75, in load_all_data
+    print(f"   Date range: {data.index[0]} to {data.index[-1]}")
+                            ~~~~~~~~~~^^^
+  File "/Users/denielnankov/Documents/Verdad_Technical_Case_Study/venv_fx/lib/python3.13/site-packages/pandas/core/indexes/base.py", line 5401, in __getitem__
+    return getitem(key)
+  File "/Users/denielnankov/Documents/Verdad_Technical_Case_Study/venv_fx/lib/python3.13/site-packages/pandas/core/arrays/datetimelike.py", line 398, in __getitem__
+    result = cast("Union[Self, DTScalarOrNaT]", super().__getitem__(key))
+                                                ~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/denielnankov/Documents/Verdad_Technical_Case_Study/venv_fx/lib/python3.13/site-packages/pandas/core/arrays/_mixins.py", line 284, in __getitem__
+    result = self._ndarray[key]
+             ~~~~~~~~~~~~~^^^^^
+IndexError: index 0 is out of bounds for axis 0 with size 0
+
+     Ensemble: R² = -0.0749
+✅ Saved models for CAD to ./ml_models/CAD
+
+  🎯 Top 10 features for CAD:
+     CAD_ma_20                                0.0512
+     CAD_downside_vol                         0.0416
+     CAD_ma_50                                0.0295
+     GBP_mom_6m                               0.0250
+     MXN_ma_20                                0.0224
+     BRL_mom_x_vix                            0.0222
+     EUR_ma_50                                0.0211
+     BRL_downside_vol                         0.0197
+     BRL_mom_12m                              0.0195
+     CAD_vol_126d                             0.0180
+
+======================================================================
+📊 Currency: CHF
+======================================================================
+
+🤖 Training ML ensemble for CHF...
+  Train: 2901 samples | Val: 726 samples
+  ├─ Training Random Forest...
+  ├─ Training XGBoost...
+  ├─ Skipping LSTM (fast mode)
+  └─ Evaluating ensemble...
+
+  ✅ Results:
+     RF:       R² = 0.0070
+     XGB:      R² = 0.0187
+     LSTM:     R² = 0.0129 (skipped)
+     Ensemble: R² = 0.0369
+✅ Saved models for CHF to ./ml_models/CHF
+
+  🎯 Top 10 features for CHF:
+     EUR_ma_50                                0.0415
+     CAD_ma_50                                0.0328
+     CHF_mom_6m_vol_adj                       0.0309
+     CHF_price_vs_ma200                       0.0297
+     BRL_mom_6m_vol_adj                       0.0296
+     CHF_mom_12m                              0.0282
+     BRL_mom_6m                               0.0228
+     AUD_ma_200                               0.0178
+     CHF_ma_20                                0.0169
+     CAD_ma_200                               0.0167
+
+======================================================================
+📊 Currency: EUR
+======================================================================
+
+🤖 Training ML ensemble for EUR...
+  Train: 2901 samples | Val: 726 samples
+  ├─ Training Random Forest...
+  ├─ Training XGBoost...
+  ├─ Skipping LSTM (fast mode)
+  └─ Evaluating ensemble...
+
+  ✅ Results:
+     RF:       R² = 0.1351
+     XGB:      R² = 0.0116
+     LSTM:     R² = 0.0734 (skipped)
+     Ensemble: R² = 0.0905
+✅ Saved models for EUR to ./ml_models/EUR
+
+  🎯 Top 10 features for EUR:
+     CAD_ma_50                                0.0430
+     BRL_mom_x_vix                            0.0365
+     BRL_vol_63d                              0.0329
+     CHF_mom_12m                              0.0230
+     CAD_ma_20                                0.0225
+     BRL_ma_200                               0.0214
+     GBP_vol_126d                             0.0185
+     CHF_dxy_beta                             0.0183
+     JPY_dxy_beta                             0.0169
+     BRL_ma_50                                0.0158
+
+======================================================================
+📊 Currency: GBP
+======================================================================
+
+🤖 Training ML ensemble for GBP...
+  Train: 2901 samples | Val: 726 samples
+  ├─ Training Random Forest...
+  ├─ Training XGBoost...
+  ├─ Skipping LSTM (fast mode)
+  └─ Evaluating ensemble...
+
+  ✅ Results:
+     RF:       R² = -0.2215
+     XGB:      R² = -0.2168
+     LSTM:     R² = -0.2191 (skipped)
+     Ensemble: R² = -0.0716
+✅ Saved models for GBP to ./ml_models/GBP
+
+  🎯 Top 10 features for GBP:
+     BRL_mom_x_vix                            0.0740
+     GBP_ma_50                                0.0435
+     GBP_mom_x_vix                            0.0426
+     GBP_price_vs_ma200                       0.0247
+     CAD_downside_vol                         0.0244
+     MXN_dxy_beta                             0.0219
+     GBP_ma_20                                0.0197
+     CAD_carry_rank                           0.0189
+     MXN_vol_126d                             0.0176
+     JPY_mom_3m                               0.0163
+
+======================================================================
+📊 Currency: JPY
+======================================================================
+
+🤖 Training ML ensemble for JPY...
+  Train: 2901 samples | Val: 726 samples
+  ├─ Training Random Forest...
+  ├─ Training XGBoost...
+  ├─ Skipping LSTM (fast mode)
+  └─ Evaluating ensemble...
+
+  ✅ Results:
+     RF:       R² = -0.1233
+     XGB:      R² = -0.0792
+     LSTM:     R² = -0.1012 (skipped)
+     Ensemble: R² = -0.0395
+✅ Saved models for JPY to ./ml_models/JPY
+
+  🎯 Top 10 features for JPY:
+     JPY_ma_200                               0.0689
+     CHF_ma_200                               0.0450
+     gdp_growth                               0.0331
+     EUR_vol_63d                              0.0321
+     JPY_ma_20                                0.0310
+     JPY_carry_rank                           0.0223
+     JPY_downside_vol                         0.0183
+     CAD_dxy_beta                             0.0172
+     MXN_dxy_beta                             0.0162
+     CAD_vol_63d                              0.0158
+
+======================================================================
+📊 Currency: MXN
+======================================================================
+
+🤖 Training ML ensemble for MXN...
+  Train: 2901 samples | Val: 726 samples
+  ├─ Training Random Forest...
+  ├─ Training XGBoost...
+  ├─ Skipping LSTM (fast mode)
+  └─ Evaluating ensemble...
+
+  ✅ Results:
+     RF:       R² = -0.2301
+     XGB:      R² = -0.3106
+     LSTM:     R² = -0.2703 (skipped)
+     Ensemble: R² = -0.1018
+✅ Saved models for MXN to ./ml_models/MXN
+
+  🎯 Top 10 features for MXN:
+     CAD_downside_vol                         0.1382
+     MXN_ma_20                                0.0333
+     MXN_dxy_beta                             0.0294
+     MXN_mom_6m_vol_adj                       0.0262
+     MXN_carry_x_mom                          0.0228
+     MXN_ma_200                               0.0212
+     CHF_mom_3m_vol_adj                       0.0188
+     CAD_vol_126d                             0.0184
+     EUR_ma_200                               0.0181
+     BRL_mom_6m                               0.0181
+
+======================================================================
+✅ TRAINING COMPLETE
+======================================================================
+
+📊 Model Performance Summary:
+Currency        RF R²     XGB R²    LSTM R²  Ensemble R²
+----------------------------------------------------------------------
+AUD           -0.2525    -0.3138    -0.2831      -0.1052
+BRL           -0.4848    -0.9459    -0.7154      -0.2620
+CAD           -0.1616    -0.3967    -0.2792      -0.0749
+CHF            0.0070     0.0187     0.0129       0.0369
+EUR            0.1351     0.0116     0.0734       0.0905
+GBP           -0.2215    -0.2168    -0.2191      -0.0716
+JPY           -0.1233    -0.0792    -0.1012      -0.0395
+MXN           -0.2301    -0.3106    -0.2703      -0.1018
+
+✅ All currencies trained successfully!
+
+======================================================================
+📊 STEP 6: PERFORMANCE SUMMARY
+======================================================================
+
+📈 Model Performance (R² Scores):
+
+Currency     RF_R2    XGB_R2   LSTM_R2  Ensemble_R2
+     AUD -0.252460 -0.313817 -0.283139    -0.105187
+     BRL -0.484842 -0.945910 -0.715376    -0.262050
+     CAD -0.161559 -0.396742 -0.279150    -0.074852
+     CHF  0.007031  0.018693  0.012862     0.036904
+     EUR  0.135136  0.011611  0.073374     0.090530
+     GBP -0.221535 -0.216756 -0.219145    -0.071578
+     JPY -0.123293 -0.079166 -0.101230    -0.039477
+     MXN -0.230085 -0.310553 -0.270319    -0.101795
+
+📊 Average Ensemble R²: -0.0659
+   ⚠️  Models need improvement - try more data or features
+
+💾 Performance saved to: ml_performance_summary.csv
+
+======================================================================
+🔮 STEP 7: GENERATING LIVE TRADING SIGNALS
+======================================================================
+📡 Fetching latest market data...
+📊 Loading comprehensive dataset for ML...
+  ├─ Loading FX rates...
+  ├─ Loading interest rates...
+  ├─ Loading market data (equities, VIX, etc.)...
+  ├─ Loading macro data (GDP, inflation, etc.)...
+  ├─ Loading commodity data...
+  └─ Merging datasets...
+✅ Loaded 0 rows, 52 columns
+❌ ERROR generating signals: index 0 is out of bounds for axis 0 with size 0
+======================================================================
+✅ ML TRAINING COMPLETE
+======================================================================
+
+📊 Training Summary:
+   Currencies trained: 8/8
+   Features engineered: 246
+   Training period: 2015-01-01 to 2025-11-05
+   Average Ensemble R²: -0.0659
+
+🚀 Next Steps:
+   1. ✅ Models trained and saved in ./ml_models/
+   2. ✅ Live signals generated
+   3. 🔄 Review performance in ml_performance_summary.csv
+   4. 🔄 Review signals in ml_current_signals.csv
+   5. 🔄 Integrate with live_trading_system.py
+   6. 📄 Start paper trading
+
+🎊 Congratulations! You have a working ML trading system!
+Completed: 2025-11-06 12:09:34
+======================================================================

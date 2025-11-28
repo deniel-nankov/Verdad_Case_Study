@@ -1,0 +1,82 @@
+{
+  "fx_USDEUR": {
+    "rate": 1.150615,
+    "bid": 1.15054,
+    "ask": 1.15069,
+    "timestamp": "2025-11-06T04:56:20.757112469Z",
+    "source": "OANDA_REALTIME"
+  },
+  "fx_USDGBP": {
+    "rate": 1.306155,
+    "bid": 1.30606,
+    "ask": 1.30625,
+    "timestamp": "2025-11-06T04:56:20.751084154Z",
+    "source": "OANDA_REALTIME"
+  },
+  "fx_USDJPY": {
+    "rate": 153.96800000000002,
+    "bid": 153.96,
+    "ask": 153.976,
+    "timestamp": "2025-11-06T04:56:18.953472431Z",
+    "source": "OANDA_REALTIME"
+  },
+  "fx_USDCAD": {
+    "rate": 1.4101799726486206,
+    "bid": 1.4094748826622965,
+    "ask": 1.4108850626349447,
+    "timestamp": "2025-11-05T22:47:21.300691",
+    "source": "YAHOO_FINANCE",
+    "ticker": "CAD=X",
+    "last_updated": "2025-11-06 00:00:00"
+  },
+  "fx_USDAUD": {
+    "rate": 1.535099918373666,
+    "bid": 1.5343323684144792,
+    "ask": 1.5358674683328528,
+    "timestamp": "2025-11-05T22:47:21.436490",
+    "source": "YAHOO_FINANCE",
+    "ticker": "AUDUSD=X",
+    "last_updated": "2025-11-06 00:00:00"
+  },
+  "fx_USDNZD": {
+    "rate": 1.765300078736189,
+    "bid": 1.764417428696821,
+    "ask": 1.766182728775557,
+    "timestamp": "2025-11-05T22:47:21.639269",
+    "source": "YAHOO_FINANCE",
+    "ticker": "NZDUSD=X",
+    "last_updated": "2025-11-06 00:00:00"
+  },
+  "fx_USDCHF": {
+    "rate": 0.80505,
+    "bid": 0.80465,
+    "ask": 0.80545,
+    "timestamp": "2025-11-07T21:59:05.113847260Z",
+    "source": "OANDA_REALTIME"
+  },
+  "fx_USDSEK": {
+    "rate": 9.551619529724121,
+    "bid": 9.54684371995926,
+    "ask": 9.556395339488983,
+    "timestamp": "2025-11-05T22:47:22.068813",
+    "source": "YAHOO_FINANCE",
+    "ticker": "SEK=X",
+    "last_updated": "2025-11-06 00:00:00"
+  },
+  "fx_USDBRL": {
+    "rate": 5.361000061035156,
+    "bid": 5.358319561004639,
+    "ask": 5.3636805610656735,
+    "timestamp": "2025-11-05T22:47:22.285469",
+    "source": "YAHOO_FINANCE",
+    "ticker": "BRL=X",
+    "last_updated": "2025-11-06 00:00:00"
+  },
+  "fx_USDMXN": {
+    "rate": 18.590400000000002,
+    "bid": 18.5879,
+    "ask": 18.5929,
+    "timestamp": "2025-11-06T04:56:23.052137590Z",
+    "source": "OANDA_REALTIME"
+  }
+}

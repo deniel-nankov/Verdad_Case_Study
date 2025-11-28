@@ -1,0 +1,25 @@
+{
+    "system": {
+        "mode": "paper",
+        "initial_capital": 100000,
+        "rebalance_frequency_hours": 24,
+        "risk_check_interval_seconds": 300,
+        "performance_update_interval_seconds": 900
+    },
+    "currencies": [
+        "AUD",
+        "BRL",
+        "CAD",
+        "CHF",
+        "EUR",
+        "GBP",
+        "JPY",
+        "MXN"
+    ],
+    "logging": {
+        "log_level": "INFO",
+        "log_file": "trading_system.log",
+        "save_performance_log": true,
+        "performance_log_file": "performance_log.csv"
+    }
+}

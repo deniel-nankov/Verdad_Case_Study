@@ -1,0 +1,106 @@
+{
+  "system": {
+    "mode": "paper",
+    "initial_capital": 100000,
+    "rebalance_frequency_hours": 24,
+    "risk_check_interval_seconds": 300,
+    "performance_update_interval_seconds": 900
+  },
+  "api_keys": {
+    "alpha_vantage": "3EHYPIVJOLW9CY8U",
+    "fred": "b4a18aac3a462b6951ee89d9fef027cb",
+    "broker_api_key": "397d1e8fcc4abcb8cafe02f5d76031fe-69705e3020a71de0705036b721eb1eb7",
+    "broker_secret": "",
+    "broker_account_id": "101-001-28239646-001"
+  },
+  "currencies": [
+    "AUD",
+    "BRL",
+    "CAD",
+    "CHF",
+    "EUR",
+    "GBP",
+    "JPY",
+    "MXN"
+  ],
+  "risk_limits": {
+    "max_position_size_pct": 0.3,
+    "max_total_exposure": 2.0,
+    "max_drawdown_pct": 0.15,
+    "stop_loss_pct": 0.05,
+    "daily_loss_limit_pct": 0.03,
+    "position_timeout_days": 30
+  },
+  "transaction_costs": {
+    "bid_ask_spread_bps": 2.0,
+    "slippage_bps": 0.5,
+    "commission_per_trade": 0.0
+  },
+  "strategy": {
+    "type": "optimized",
+    "lookback_days": 756,
+    "min_currencies_long": 3,
+    "min_currencies_short": 3,
+    "use_ml_filter": false,
+    "use_signal_weighting": true,
+    "volatility_target": 0.1
+  },
+  "monitoring": {
+    "enable_email_alerts": false,
+    "email_address": "your.email@example.com",
+    "enable_slack_notifications": false,
+    "slack_webhook_url": "YOUR_SLACK_WEBHOOK_URL",
+    "alert_on_stop_loss": true,
+    "alert_on_drawdown": true,
+    "alert_on_daily_limit": true
+  },
+  "logging": {
+    "log_level": "INFO",
+    "log_file": "trading_system.log",
+    "save_performance_log": true,
+    "performance_log_file": "performance_log.csv"
+  },
+  "paper_trading": {
+    "mode": "paper",
+    "strategy": "ml_hybrid",
+    "initial_capital": 100000,
+    "max_position_size": 0.3,
+    "max_total_exposure": 0.7,
+    "cash_reserve": 0.15,
+    "max_leverage": 2.0,
+    "ml_currencies": [
+      "EUR",
+      "CHF"
+    ],
+    "carry_currencies": [
+      "AUD",
+      "CAD",
+      "GBP",
+      "JPY"
+    ],
+    "min_signal_strength": 0.3,
+    "max_spread_pips": 3,
+    "max_vix_level": 30,
+    "signal_confirmation_days": 2,
+    "rebalance_frequency": "weekly",
+    "hard_stop_loss": -0.02,
+    "trailing_stop": 0.015,
+    "daily_loss_limit": -0.03,
+    "weekly_loss_limit": -0.05,
+    "oanda_account_type": "practice",
+    "oanda_account_id": "",
+    "oanda_api_key": "",
+    "oanda_environment": "practice",
+    "model_dir": "./ml_models",
+    "retrain_frequency": "monthly",
+    "feature_update_frequency": "daily",
+    "log_file": "paper_trading.log",
+    "performance_file": "paper_performance.csv",
+    "send_alerts": true,
+    "alert_email": "",
+    "created_at": "2025-11-06T20:02:47.948135",
+    "last_updated": "2025-11-06T20:02:47.948142",
+    "version": "1.0",
+    "description": "Paper trading configuration for ML FX strategy (EUR + CHF)"
+  }
+}

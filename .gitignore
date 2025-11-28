@@ -26,6 +26,31 @@ build/
 .vscode/
 *.code-workspace
 
+# CRITICAL - Environment & Credentials
+.env
+*.env
+.env.local
+.env.*.local
+credentials.json
+config_secret.json
+api_keys.txt
+
+# Trading logs and data (contains sensitive info)
+*.log
+trading_system.log
+performance_log.csv
+live_positions.json
+live_orders.json
+trade_history.csv
+
+# Temporary and backup files
+*.tmp
+*.bak
+*.backup
+*_backup.*
+temp/
+tmp/
+
 # Data files (optional - remove if you want to include the CSV)
 # *.csv
 # *.numbers

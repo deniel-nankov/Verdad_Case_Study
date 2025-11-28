@@ -1,0 +1,24 @@
+{
+    "strategy": {
+        "type": "optimized",
+        "lookback_days": 756,
+        "min_currencies_long": 3,
+        "min_currencies_short": 3,
+        "use_ml_filter": false,
+        "use_signal_weighting": true,
+        "volatility_target": 0.1
+    },
+    "ml_strategy": {
+        "model_dir": "./models/ml",
+        "retrain_frequency": "monthly",
+        "feature_update_frequency": "daily",
+        "min_signal_strength": 0.3
+    },
+    "monitoring": {
+        "enable_email_alerts": false,
+        "enable_slack_notifications": false,
+        "alert_on_stop_loss": true,
+        "alert_on_drawdown": true,
+        "alert_on_daily_limit": true
+    }
+}
